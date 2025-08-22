@@ -17,13 +17,12 @@ class RegisterController extends Controller
 {
     public function index()
     {
-        abort(403, 'Hayo mau ngapain');
         return view('theme::auth.register');
     }
 
     public function store(Request $request)
     {
-        abort(403, 'Hayo mau ngapain');
+
         $request->validate([
             'username' => 'unique:users|min:4|required',
             'email' => 'unique:users|email|required',

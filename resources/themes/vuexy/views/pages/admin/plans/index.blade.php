@@ -84,7 +84,7 @@
 						<h6 class="text-muted" dir="ltr">
 							<i class="ti tabler-currency-dollar text-primary"></i>
 							{{ number_format($plan->price) }} {{ $plan->symbol }} /
-							<span dir="{{ in_array(app()->getLocale(), ['ar', 'he', 'fa']) ? 'rtl' : 'ltr' }}">
+							<span dir="{{ in_array(app()->getLocale(), ['ar', 'he', 'fa', 'ur']) ? 'rtl' : 'ltr' }}">
 								{{ $plan->days }} {{ __('days') }}
 							</span>
 						</h6>

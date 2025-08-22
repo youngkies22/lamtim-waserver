@@ -1,5 +1,5 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml" lang="{{ str_replace('_', '-', app()->getLocale()) }}" dir="{{ in_array(app()->getLocale(), ['ar', 'he', 'fa']) ? 'rtl' : 'ltr' }}">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="{{ str_replace('_', '-', app()->getLocale()) }}" dir="{{ in_array(app()->getLocale(), ['ar', 'he', 'fa', 'ur']) ? 'rtl' : 'ltr' }}">
 <head>
 	<title>{{config('config.site_name')}}</title>
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -123,14 +123,14 @@
 		font-size: 18px;
 		font-weight: bold;
 		margin-top: 0;
-		text-align: {{ in_array(app()->getLocale(), ['ar', 'he', 'fa']) ? 'right' : 'left' }};
+		text-align: {{ in_array(app()->getLocale(), ['ar', 'he', 'fa', 'ur']) ? 'right' : 'left' }};
 	}
 
 	.p-style {
 		font-size: 16px;
 		line-height: 1.5em;
 		margin-top: 0;
-		text-align: {{ in_array(app()->getLocale(), ['ar', 'he', 'fa']) ? 'right' : 'left' }};
+		text-align: {{ in_array(app()->getLocale(), ['ar', 'he', 'fa', 'ur']) ? 'right' : 'left' }};
 	}
 
 	.action-style {
@@ -172,7 +172,7 @@
 	.subcopy-p-style {
 		line-height: 1.5em;
 		margin-top: 0;
-		text-align: {{ in_array(app()->getLocale(), ['ar', 'he', 'fa']) ? 'right' : 'left' }};
+		text-align: {{ in_array(app()->getLocale(), ['ar', 'he', 'fa', 'ur']) ? 'right' : 'left' }};
 		font-size: 14px;
 	}
 

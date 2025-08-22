@@ -2,7 +2,7 @@
 	<div class="d-flex mb-3 gap-3">
 		<div>
 			<span class="badge bg-label-primary rounded-2 p-2">
-			<i class="ti tabler-message icon-32px"></i>
+				<i class="ti tabler-message icon-32px"></i>
 			</span>
 		</div>
 		<div>
@@ -44,24 +44,32 @@
 							<td>number</td>
 							<td>string</td>
 							<td>Yes</td>
-							<td>recipient number ex 72888xxxx|62888xxxx</td>
+							<td>Recipient number ex 72888xxxx | 62888xxxx</td>
 						</tr>
 						<tr>
 							<td>message</td>
 							<td>string</td>
 							<td>Yes</td>
-							<td>Messsage to be sent</td>
+							<td>Message to be sent</td>
 						</tr>
 						<tr>
 							<td>footer</td>
 							<td>string</td>
-							<td>Yes</td>
+							<td>No</td>
 							<td>Footer under message</td>
+						</tr>
+						<tr>
+							<td>full</td>
+							<td>number</td>
+							<td>No</td>
+							<td>Show full response from WhatsApp (1 = enabled)</td>
 						</tr>
 					</tbody>
 				</table>
 				<br>
-				<p>Example JSON Request</p>
+
+				<h6>Example Without <code>full</code></h6>
+				<p>JSON Request</p>
 <pre class="bg-dark rounded text-white"><code>{
     "api_key": "1234567890",
     "sender": "62888xxxx",
@@ -69,13 +77,50 @@
     "message": "Hello World",
     "footer": "Sent via mpwa"
 }</code></pre>
-				<p>Example URL Request</p>
-<pre class="bg-dark rounded text-white"><code class="json">{{ url('/') }}/send-message?api_key=1234567890&sender=62888xxxx&number=62888xxxx&message=Hello World&footer=Sent via mpwa</code></pre>
-				<p>Example JSON Response</p>
+
+				<p>URL Request</p>
+<pre class="bg-dark rounded text-white"><code>{{ url('/') }}/send-message?api_key=1234567890&sender=62888xxxx&number=62888xxxx&message=Hello World&footer=Sent via mpwa</code></pre>
+
+				<p>JSON Response</p>
 <pre class="bg-dark rounded text-white"><code>{
-    "status":true,
-    "msg":"Message sent successfully!"
+    "status": true,
+    "msg": "Message sent successfully!"
 }</code></pre>
+
+				<hr class="my-4">
+
+				<h6>Example With <code>full</code></h6>
+				<p>JSON Request</p>
+<pre class="bg-dark rounded text-white"><code>{
+    "api_key": "1234567890",
+    "sender": "62888xxxx",
+    "number": "62888xxxx",
+    "message": "Hello World",
+    "footer": "Sent via mpwa",
+    "full": 1
+}</code></pre>
+
+				<p>URL Request</p>
+<pre class="bg-dark rounded text-white"><code>{{ url('/') }}/send-message?api_key=1234567890&sender=62888xxxx&number=62888xxxx&message=Hello World&footer=Sent via mpwa&full=1</code></pre>
+
+				<p>JSON Response</p>
+<pre class="bg-dark rounded text-white"><code>{
+  "status": true,
+  "data": {
+    "key": {
+      "remoteJid": "62888xxxx@c.us",
+      "fromMe": true,
+      "id": "3EB0C41E9D2DFXXXXXXXXX"
+    },
+    "message": {
+      "extendedTextMessage": {
+        "text": "Hello World"
+      }
+    },
+    "messageTimestamp": "1755623949"
+  }
+}</code></pre>
+
 			</div>
 		</div>
 	</div>

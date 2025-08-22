@@ -134,14 +134,14 @@
                           <span class="dropdown-shortcuts-icon rounded-circle mb-3">
                             <i class="icon-base ti tabler-robot icon-26px text-heading"></i>
                           </span>
-                          <a href="app-user-list.html" class="stretched-link">{{__('AI Bot')}}</a>
+                          <a href="{{ route('aibot') }}" class="stretched-link">{{__('AI Bot')}}</a>
                           <small>{{__('Setup AI Bot')}}</small>
                         </div>
                         <div class="dropdown-shortcuts-item col">
                           <span class="dropdown-shortcuts-icon rounded-circle mb-3">
                             <i class="icon-base ti tabler-message-2 icon-26px text-heading"></i>
                           </span>
-                          <a href="app-access-roles.html" class="stretched-link">{{__('Auto Reply')}}</a>
+                          <a href="{{ route('autoreply') }}" class="stretched-link">{{__('Auto Reply')}}</a>
                           <small>{{__('Create Auto Reply')}}</small>
                         </div>
                       </div>
@@ -180,7 +180,7 @@
                   </a>
                   <ul class="dropdown-menu dropdown-menu-end">
                     <li>
-                      <a class="dropdown-item mt-0" href="pages-account-settings-account.html">
+                      <a class="dropdown-item mt-0" href="#">
                         <div class="d-flex align-items-center">
                           <div class="flex-shrink-0 me-2">
                             <div class="avatar avatar-online">

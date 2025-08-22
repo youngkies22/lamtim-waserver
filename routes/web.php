@@ -133,12 +133,12 @@ Route::group(['prefix' => LaravelLocalization::setLocale()], function() {
 	  Route::post('fetch-channel',[MessagesController::class ,'fetchChannel'])->name('fetch.channel');
 
 	  Route::get('/api-docs',RestapiController::class)->name('rest-api')->middleware('permissions');
-
 	  
-Route::get('/chat', [ChatController::class, 'index'])->name('chat.index')->middleware('permissions');
-  Route::get('/chat/messages/{session}', [ChatController::class, 'messages'])->name('chat.messages')->middleware('permissions');
-  Route::post('/chat/session/name', [ChatController::class, 'setSessionName'])->name('chat.session.setName')->middleware('permissions');
-Route::get('/user/settings',[UserController::class,'settings'])->name('user.settings');
+	  Route::get('/chat', [ChatController::class, 'index'])->name('chat.index')->middleware('permissions');
+	  Route::get('/chat/messages/{session}', [ChatController::class, 'messages'])->name('chat.messages')->middleware('permissions');
+	  Route::post('/chat/session/name', [ChatController::class, 'setSessionName'])->name('chat.session.setName')->middleware('permissions');
+
+	  Route::get('/user/settings',[UserController::class,'settings'])->name('user.settings');
 	  Route::post('/user/change-password',[UserController::class,'changePasswordPost'])->name('changePassword');
 	  Route::post('/user/setting/apikey',[UserController::class,'generateNewApiKey'])->name('generateNewApiKey');
 	  Route::post('/user/setting/deletehistory',[UserController::class,'deleteHistory'])->name('deleteHistory');
@@ -200,11 +200,11 @@ Route::get('/user/settings',[UserController::class,'settings'])->name('user.sett
 	  Route::post('/admin/update/install',[UpdateController::class,'installUpdate'])->name('update.install')->middleware('admin');
 	  
 	  Route::get('/admin/manage-themes',[ThemesController::class,'index'])->name('admin.manage-themes')->middleware('admin');
-	  Route::get('/admin/active-index-themes/{name}',[ThemesController::class,'activeIndexTheme'])->name('themes.activeIndex')->middleware('admin');
-	  Route::post('/admin/delete-index-themes',[ThemesController::class,'deleteIndexTheme'])->name('themes.deleteIndex')->middleware('admin');
 	  Route::get('/admin/active-themes/{name}',[ThemesController::class,'activeTheme'])->name('themes.active')->middleware('admin');
+	  Route::get('/admin/active-index-themes/{name}',[ThemesController::class,'activeIndexTheme'])->name('themes.activeIndex')->middleware('admin');
 	  Route::post('/admin/download-themes',[ThemesController::class,'downloadTheme'])->name('themes.download')->middleware('admin');
 	  Route::post('/admin/delete-themes',[ThemesController::class,'deleteTheme'])->name('themes.delete')->middleware('admin');
+	  Route::post('/admin/delete-index-themes',[ThemesController::class,'deleteIndexTheme'])->name('themes.deleteIndex')->middleware('admin');
 
 	  Route::get('/admin/manage-users',[ManageUsersController::class,'index'])->name('admin.manage-users')->middleware('admin');
 	  Route::post('/admin/user/store',[ManageUsersController::class,'store'])->name('user.store')->middleware('admin');

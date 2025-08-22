@@ -3,7 +3,7 @@
 <html
   lang="{{ str_replace('_', '-', app()->getLocale()) }}"
   class="layout-navbar-fixed layout-menu-fixed layout-compact"
-  dir="{{ in_array(app()->getLocale(), ['ar', 'he', 'fa']) ? 'rtl' : 'ltr' }}"
+  dir="{{ in_array(app()->getLocale(), ['ar', 'he', 'fa', 'ur']) ? 'rtl' : 'ltr' }}"
   data-skin="default"
   data-assets-path="{{asset_index('/')}}/"
   data-template="vuexy-magd"

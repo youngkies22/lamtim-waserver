@@ -101,12 +101,12 @@
               <button class="btn btn-primary d-grid w-100">{{ __('Sign In') }}</button>
             </form>
 
-            <!--<p class="text-center">-->
-            <!--  <span>{{__("Don't have an account yet?")}}</span>-->
-            <!--  <a href="{{ route('register') }}">-->
-            <!--    <span>{{__('Sign up here')}}</span>-->
-            <!--  </a>-->
-            <!--</p>-->
+            <p class="text-center">
+              <span>{{__("Don't have an account yet?")}}</span>
+              <a href="{{ route('register') }}">
+                <span>{{__('Sign up here')}}</span>
+              </a>
+            </p>
           </div>
         </div>
         <!-- /Login -->

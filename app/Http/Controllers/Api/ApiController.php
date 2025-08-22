@@ -139,6 +139,14 @@ class ApiController extends Controller
 			}
 
 			$this->insertAndIncrement($prepareHistoryMessage, $success);
+			if ($request->full) {
+				if (is_array($sendMessage)) {
+					unset($sendMessage['data']['status']);
+				} elseif (is_object($sendMessage) && isset($sendMessage->data->status)) {
+					unset($sendMessage->data->status);
+				}
+				return response()->json($sendMessage);
+			}
 			return $this->handleResponse($success);
 		} catch (\Throwable $th) {
 			Log::error($th);
@@ -189,6 +197,14 @@ class ApiController extends Controller
 			}
 
 			$this->insertAndIncrement($prepareHistoryMessage, $success);
+			if ($request->full) {
+				if (is_array($sendMessage)) {
+					unset($sendMessage['data']['status']);
+				} elseif (is_object($sendMessage) && isset($sendMessage->data->status)) {
+					unset($sendMessage->data->status);
+				}
+				return response()->json($sendMessage);
+			}
 			return $this->handleResponse($success);
 		} catch (\Throwable $th) {
 			Log::error($th);
@@ -238,6 +254,14 @@ class ApiController extends Controller
 			}
 
 			$this->insertAndIncrement($prepareHistoryMessage, $success);
+			if ($request->full) {
+				if (is_array($sendMessage)) {
+					unset($sendMessage['data']['status']);
+				} elseif (is_object($sendMessage) && isset($sendMessage->data->status)) {
+					unset($sendMessage->data->status);
+				}
+				return response()->json($sendMessage);
+			}
 			return $this->handleResponse($success);
 		} catch (\Throwable $th) {
 			Log::error($th);
@@ -311,6 +335,14 @@ class ApiController extends Controller
 			}
 
 			$this->insertAndIncrement($prepareHistoryMessage, $success);
+			if ($request->full) {
+				if (is_array($sendMessage)) {
+					unset($sendMessage['data']['status']);
+				} elseif (is_object($sendMessage) && isset($sendMessage->data->status)) {
+					unset($sendMessage->data->status);
+				}
+				return response()->json($sendMessage);
+			}
 			return $this->handleResponse($success);
 		} catch (\Throwable $th) {
 			Log::error($th);
@@ -360,6 +392,14 @@ class ApiController extends Controller
 			}
 
 			$this->insertAndIncrement($prepareHistoryMessage, $success);
+			if ($request->full) {
+				if (is_array($sendMessage)) {
+					unset($sendMessage['data']['status']);
+				} elseif (is_object($sendMessage) && isset($sendMessage->data->status)) {
+					unset($sendMessage->data->status);
+				}
+				return response()->json($sendMessage);
+			}
 			return $this->handleResponse($success);
 		} catch (\Throwable $th) {
 			Log::error($th);
@@ -410,6 +450,14 @@ class ApiController extends Controller
 			}
 
 			$this->insertAndIncrement($prepareHistoryMessage, $success);
+			if ($request->full) {
+				if (is_array($sendMessage)) {
+					unset($sendMessage['data']['status']);
+				} elseif (is_object($sendMessage) && isset($sendMessage->data->status)) {
+					unset($sendMessage->data->status);
+				}
+				return response()->json($sendMessage);
+			}
 			return $this->handleResponse($success);
 		} catch (\Throwable $th) {
 			return $this->sendFailResponse($this->RESPON_FAILED);
@@ -458,6 +506,14 @@ class ApiController extends Controller
 			}
 
 			$this->insertAndIncrement($prepareHistoryMessage, $success);
+			if ($request->full) {
+				if (is_array($sendMessage)) {
+					unset($sendMessage['data']['status']);
+				} elseif (is_object($sendMessage) && isset($sendMessage->data->status)) {
+					unset($sendMessage->data->status);
+				}
+				return response()->json($sendMessage);
+			}
 			return $this->handleResponse($success);
 		} catch (\Throwable $th) {
 			return $this->sendFailResponse($this->RESPON_FAILED);
@@ -501,6 +557,14 @@ class ApiController extends Controller
                 $prepareHistoryMessage[] = $this->createDataForBatchInput($request, $number, $sendMessage);
             }
             $this->insertAndIncrement($prepareHistoryMessage, $success);
+			if ($request->full) {
+				if (is_array($sendMessage)) {
+					unset($sendMessage['data']['status']);
+				} elseif (is_object($sendMessage) && isset($sendMessage->data->status)) {
+					unset($sendMessage->data->status);
+				}
+				return response()->json($sendMessage);
+			}
             return $this->handleResponse($success);
         } catch (\Throwable $th) {
             Log::error($th);
@@ -555,6 +619,14 @@ class ApiController extends Controller
 			}
 
 			$this->insertAndIncrement($prepareHistoryMessage, $success);
+			if ($request->full) {
+				if (is_array($sendMessage)) {
+					unset($sendMessage['data']['status']);
+				} elseif (is_object($sendMessage) && isset($sendMessage->data->status)) {
+					unset($sendMessage->data->status);
+				}
+				return response()->json($sendMessage);
+			}
 			return $this->handleResponse($success);
 		//} catch (\Throwable $th) {
 		//	return $this->sendFailResponse($this->RESPON_FAILED);
@@ -605,6 +677,14 @@ class ApiController extends Controller
 			}
 
 			$this->insertAndIncrement($prepareHistoryMessage, $success);
+			if ($request->full) {
+				if (is_array($sendMessage)) {
+					unset($sendMessage['data']['status']);
+				} elseif (is_object($sendMessage) && isset($sendMessage->data->status)) {
+					unset($sendMessage->data->status);
+				}
+				return response()->json($sendMessage);
+			}
 			return $this->handleResponse($success);
 		} catch (\Throwable $th) {
 			return $this->sendFailResponse($this->RESPON_FAILED);

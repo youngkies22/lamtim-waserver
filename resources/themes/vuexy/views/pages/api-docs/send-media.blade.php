@@ -1,8 +1,8 @@
-<div class="tab-pane fade  " id="sendmedia" role="tabpanel">
+<div class="tab-pane fade" id="sendmedia" role="tabpanel">
 	<div class="d-flex mb-3 gap-3">
 		<div>
 			<span class="badge bg-label-primary rounded-2 p-2">
-			<i class="ti tabler-photo icon-32px"></i>
+				<i class="ti tabler-photo icon-32px"></i>
 			</span>
 		</div>
 		<div>
@@ -15,69 +15,76 @@
 	<div id="accordionPayment" class="accordion">
 		<div class="card">
 			<div class="card-body">
-      <p>Method : <code class="text-success">POST</code> | <code class="text-primary">GET</code></p>
-      <p>Endpoint: <code>{{ url('/') }}/send-media</code></p>
+				<p>Method : <code class="text-success">POST</code> | <code class="text-primary">GET</code></p>
+				<p>Endpoint: <code>{{ url('/') }}/send-media</code></p>
 
-      <p>Request Body : (JSON If POST)
-      <table class="table">
-          <thead>
-              <tr>
-                  <th>Parameter</th>
-                  <th>Type</th>
-                  <th>Required</th>
-                  <th>Description</th>
-              </tr>
-          </thead>
-          <tbody>
-              <tr>
-                  <td>api_key</td>
-                  <td>string</td>
-                  <td>Yes</td>
-                  <td>API Key</td>
-              </tr>
-              <tr>
-                  <td>sender</td>
-                  <td>string</td>
-                  <td>Yes</td>
-                  <td>Number of your device</td>
-              </tr>
-              <tr>
-                  <td>number</td>
-                  <td>string</td>
-                  <td>Yes</td>
-                  <td>recipient number ex 72888xxxx|62888xxxx</td>
-              </tr>
-              <tr>
-                  <td>media_type</td>
-                  <td>string</td>
-                  <td>Yes</td>
-                  <td>allow : image,video,audio,document </td>
-              </tr>
-              <tr>
-                  <td>caption</td>
-                  <td>string</td>
-                  <td>No</td>
-                  <td>caption/message</td>
-              </tr>
-			  <tr>
-                  <td>footer</td>
-                  <td>string</td>
-                  <td>No</td>
-                  <td>Footer under message</td>
-              </tr>
-              <tr>
-                  <td>url</td>
-                  <td>string</td>
-                  <td>Yes</td>
-                  <td>URL of media, must direct link</td>
-              </tr>
+				<p>Request Body : (JSON If POST)</p>
+				<table class="table">
+					<thead>
+						<tr>
+							<th>Parameter</th>
+							<th>Type</th>
+							<th>Required</th>
+							<th>Description</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<td>api_key</td>
+							<td>string</td>
+							<td>Yes</td>
+							<td>API Key</td>
+						</tr>
+						<tr>
+							<td>sender</td>
+							<td>string</td>
+							<td>Yes</td>
+							<td>Number of your device</td>
+						</tr>
+						<tr>
+							<td>number</td>
+							<td>string</td>
+							<td>Yes</td>
+							<td>Recipient number ex 72888xxxx | 62888xxxx</td>
+						</tr>
+						<tr>
+							<td>media_type</td>
+							<td>string</td>
+							<td>Yes</td>
+							<td>Allow: image, video, audio, document</td>
+						</tr>
+						<tr>
+							<td>caption</td>
+							<td>string</td>
+							<td>No</td>
+							<td>Caption/message</td>
+						</tr>
+						<tr>
+							<td>footer</td>
+							<td>string</td>
+							<td>No</td>
+							<td>Footer under message</td>
+						</tr>
+						<tr>
+							<td>url</td>
+							<td>string</td>
+							<td>Yes</td>
+							<td>Direct URL of media (not Google Drive, Dropbox, etc.)</td>
+						</tr>
+						<tr>
+							<td>full</td>
+							<td>number</td>
+							<td>No</td>
+							<td>Show full response from WhatsApp</td>
+						</tr>
+					</tbody>
+				</table>
 
-          </tbody>
-      </table>
+				<p>Note: Make sure the url is a direct link, not a shared link from cloud storage.</p>
+				<br>
 
-      <p>Note: Make sure the url is direct link, not a link from google drive or other cloud storage</p>
-      <br>
-      <p>Example JSON Request </p>
+				<h6>Example Without <code>full</code></h6>
+				<p>JSON Request</p>
 <pre class="bg-dark rounded text-white"><code>{
     "api_key": "1234567890",
     "sender": "62888xxxx",
@@ -87,14 +94,64 @@
     "footer": "Sent via mpwa",
     "url": "https://example.com/image.jpg"
 }</code></pre>
-      <p>Example URL Request</p>
-<pre class="bg-dark rounded text-white"><code class="json">{{ url('/') }}/send-media?api_key=1234567890&sender=62888xxxx&number=62888xxxx&media_type=image&caption=Hello World&footer=Sent via mpwa&url=https://example.com/image.jpg</code></pre>
-    <p>Example JSON Response</p>
+
+				<p>URL Request</p>
+<pre class="bg-dark rounded text-white"><code>{{ url('/') }}/send-media?api_key=1234567890&sender=62888xxxx&number=62888xxxx&media_type=image&caption=Hello World&footer=Sent via mpwa&url=https://example.com/image.jpg</code></pre>
+
+				<p>JSON Response</p>
 <pre class="bg-dark rounded text-white"><code>{
-    "status":true,
-    "msg":"Message sent successfully!"
+    "status": true,
+    "msg": "Message sent successfully!"
 }</code></pre>
-  </div>
-</div>
-</div>
+
+				<hr class="my-4">
+
+				<h6>Example With <code>full</code></h6>
+				<p>JSON Request</p>
+<pre class="bg-dark rounded text-white"><code>{
+    "api_key": "1234567890",
+    "sender": "62888xxxx",
+    "number": "62888xxxx",
+    "media_type": "image",
+    "caption": "Hello World",
+    "footer": "Sent via mpwa",
+    "url": "https://example.com/image.jpg",
+    "full": 1
+}</code></pre>
+
+				<p>URL Request</p>
+<pre class="bg-dark rounded text-white"><code>{{ url('/') }}/send-media?api_key=1234567890&sender=62888xxxx&number=62888xxxx&media_type=image&caption=Hello World&footer=Sent via mpwa&url=https://example.com/image.jpg&full=1</code></pre>
+
+				<p>JSON Response</p>
+<pre class="bg-dark rounded text-white"><code>{
+  "status": true,
+  "data": {
+    "key": {
+      "remoteJid": "62888xxxx@c.us",
+      "fromMe": true,
+      "id": "3EB0C373B04BXXXXXXXXXXX"
+    },
+    "message": {
+      "imageMessage": {
+        "url": "https://mmg.whatsapp.net/o1/v/t24/f2/m269/AQOKz_WB7dPWFfryJk1K8Cg09KW81xBjZq-eCQkPli773uWKhUfXiQMvyAEoJupyQ6_1FZ2bdm8Bf9Fye3OhSo9Gfh5XXXXXXXXXXX...",
+        "mimetype": "image/jpeg",
+        "caption": "Hello World",
+        "fileSha256": "aNp8bcfZwEVhdPJXWr6Pir1SzeekXXXXXXXXXXX=",
+        "fileLength": "498",
+        "height": 72,
+        "width": 72,
+        "mediaKey": "n4fHuJxnZbK6u3UpKFAQddtrpZRp8CxXXXXXXXXXXX=",
+        "fileEncSha256": "KmFkZsVNfI4pwEE8yu6GsjLuIy7uwTtcXXXXXXXXXXX=",
+        "directPath": "/o1/v/t24/f2/m269/AQOKz_WB7dPWFfryJk1K8Cg09KW81xBjZq-eCQkPli773uWKhUfXiQMvyAEoJupyQ6_1FZ2bdm8Bf9Fye3OhSXXXXXXXXXXX...",
+        "mediaKeyTimestamp": "1755628853",
+        "jpegThumbnail": "/9j/2wBDABALDA4MChAODQ4SERATGCgaGBYWGDEjJR0oOjM9PDXXXXXXXXXXX...",
+        "viewOnce": false
+      }
+    },
+    "messageTimestamp": "1755628853"
+  }
+}</code></pre>
+			</div>
+		</div>
+	</div>
 </div>

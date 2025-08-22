@@ -6,7 +6,7 @@ const dbs = require('./server/database/index');
 const specs = require('./server/lib/specs');
 require("dotenv").config();
 const lib = require("./server/lib");
-const chat = require("./server/chat");
+const chat = require("./server/chat")
 global.log = lib.log;
 
 /**
@@ -25,9 +25,10 @@ const io = new Server(server, {
   pingInterval: 25000,
   pingTimeout: 10000,
 });
-const port = process.env.PORT_NODE;
 
+const port = process.env.PORT_NODE;
 wa.setSocketIO(io);
+
 app.use((req, res, next) => {
   res.set("Cache-Control", "no-store");
   req.io = io;
@@ -49,9 +50,10 @@ app.use(express.static("src/public"));
 app.use(require("./server/router"));
 
 chat.setIO(io);
+
 io.on('connection', socket => {
 	console.log("A user connected");
-socket.on('specs', () => {
+	socket.on('specs', () => {
 		specs.init(socket);
 	});
 	socket.on('StartConnection', data => wa.connectToWhatsApp(data, io));
@@ -59,7 +61,6 @@ socket.on('specs', () => {
 	socket.on('LogoutDevice', device => wa.deleteCredentials(device, io));
 	socket.on('disconnect', () => console.log('A user disconnected:', socket.id));
 });
-
 
 server.listen(port, () => {
     console.log(`Server running and listening on port: ${port}`);

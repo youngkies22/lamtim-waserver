@@ -10,7 +10,68 @@
 		font-family: monospace;
 		white-space: pre-wrap;
 	}
+	.quick-actions .quick-box { cursor: pointer; transition: transform .15s ease, box-shadow .15s ease; border: 1px solid var(--bs-border-color); }
+	.quick-actions .quick-box:hover { transform: translateY(-2px); box-shadow: 0 .5rem 1rem rgba(0,0,0,.08); }
+	.quick-actions .quick-box.loading { opacity: .6; pointer-events: none; }
 </style>
+
+    <div class="card mb-4">
+        <div class="card-header">
+            <h5 class="mb-0">{{ __('Maintenance Shortcuts') }}</h5>
+        </div>
+        <div class="card-body quick-actions">
+            <div class="row g-4">
+                <div class="col-12 col-md-4">
+                    <div class="card quick-box h-100" data-url="{{url('migrate')}}" data-name="{{ __('Migrate') }}">
+                        <div class="card-body d-flex align-items-center justify-content-between">
+                            <div class="d-flex align-items-center gap-3">
+                                <span class="badge bg-label-primary rounded-2 p-2">
+                                    <i class="ti tabler-database-cog icon-28px"></i>
+                                </span>
+                                <div>
+                                    <div class="fw-medium">{{ __('Migrate') }}</div>
+                                    <small class="text-muted">{{ __('Run database migrations') }}</small>
+                                </div>
+                            </div>
+                            <i class="ti tabler-chevron-right text-muted"></i>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12 col-md-4">
+                    <div class="card quick-box h-100" data-url="{{url('view-clear')}}" data-name="{{ __('View Clear') }}">
+                        <div class="card-body d-flex align-items-center justify-content-between">
+                            <div class="d-flex align-items-center gap-3">
+                                <span class="badge bg-label-info rounded-2 p-2">
+                                    <i class="ti tabler-eye-cancel icon-28px"></i>
+                                </span>
+                                <div>
+                                    <div class="fw-medium">{{ __('View Clear') }}</div>
+                                    <small class="text-muted">{{ __('Clear compiled views') }}</small>
+                                </div>
+                            </div>
+                            <i class="ti tabler-chevron-right text-muted"></i>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12 col-md-4">
+                    <div class="card quick-box h-100" data-url="{{url('clear-cache')}}" data-name="{{ __('Clear Cache') }}">
+                        <div class="card-body d-flex align-items-center justify-content-between">
+                            <div class="d-flex align-items-center gap-3">
+                                <span class="badge bg-label-danger rounded-2 p-2">
+                                    <i class="ti tabler-refresh icon-28px"></i>
+                                </span>
+                                <div>
+                                    <div class="fw-medium">{{ __('Clear Cache') }}</div>
+                                    <small class="text-muted">{{ __('Clear application cache') }}</small>
+                                </div>
+                            </div>
+                            <i class="ti tabler-chevron-right text-muted"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 
     <div class="card">
         <div class="card-header d-flex justify-content-between align-items-center">
@@ -160,6 +221,27 @@
 				copyBtn.innerHTML = originalText;
 				copyBtn.disabled = false;
 			}, 3000);
+		});
+
+		document.querySelectorAll('.quick-box').forEach(box => {
+			box.addEventListener('click', async () => {
+				if (box.classList.contains('loading')) return;
+				box.classList.add('loading');
+				const url = box.dataset.url;
+				const name = box.dataset.name || url;
+				try {
+					const res = await fetch(url, { method: 'GET', headers: { 'X-Requested-With': 'XMLHttpRequest' } });
+					if (res.ok) {
+						notyf.success(name + ' {{ __("executed successfully") }}');
+					} else {
+						notyf.error(name + ' {{ __("failed to execute") }}');
+					}
+				} catch (e) {
+					notyf.error('{{ __("Network error") }}');
+				} finally {
+					box.classList.remove('loading');
+				}
+			});
 		});
 	</script>
 </x-layout-dashboard>

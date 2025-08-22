@@ -27,7 +27,7 @@
     "link-preview-js": "^3.1.0"
   },
   "name": "mpwa",
-  "version": "11.0.1",
+  "version": "11.2.0",
   "description": "Whatsapp remote API multi device, multi instance. Based on onexgen baileys.",
   "main": "server.js",
   "author": "Magd Almuntaser <info@onexgen.com>",
